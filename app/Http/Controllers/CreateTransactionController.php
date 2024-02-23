@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\CreateTransactionJob;
 use App\Repositories\CustomersRepository;
-use App\Repositories\TransactionsRepository;
 use Illuminate\Http\Request;
 
 class CreateTransactionController extends Controller
@@ -24,11 +24,11 @@ class CreateTransactionController extends Controller
             }
         }
 
-        app(TransactionsRepository::class)->create(
+        CreateTransactionJob::dispatch(
             $request->get('valor'),
             $request->get('descricao'),
             $request->get('tipo'),
-            $customer->id
+            $customerId
         );
 
         $customer->balance = $newBalance;

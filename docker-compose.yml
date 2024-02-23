@@ -12,10 +12,10 @@ services:
         <<: *api
         container_name: api02
 
-#    horizon:
-#        <<: *api
-#        container_name: horizon
-#        command: ["php", "artisan", "horizon"]
+    horizon:
+        <<: *api
+        container_name: horizon
+        command: ["php", "artisan", "horizon"]
 
     nginx:
         image: nginx:latest

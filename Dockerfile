@@ -6,7 +6,9 @@ RUN apk --no-cache add \
     mysql-client \
     && docker-php-ext-install pdo_mysql pcntl \
     && pecl install openswoole \
-    && docker-php-ext-enable openswoole pcntl
+    && docker-php-ext-enable openswoole pcntl \
+    && pecl install redis \
+    && docker-php-ext-enable redis
 
 WORKDIR /app
 
